@@ -21,6 +21,9 @@ export const pureAddUser = (name: string, setError: (name:string) => void, setNa
 }
 
 export const pureOnBlur = (name: string, setError: (error:string) => void) => { // если имя пустое - показать ошибку
+    if (name.trim() === '') {
+        setError('Введите юзера')
+    }
 }
 
 export const pureOnEnter = (e: any, addUser: () => void) => {
@@ -56,7 +59,7 @@ const GreetingContainer: React.FC<GreetingContainerPropsType> = ({
         pureOnBlur(name, setError)
     }
 
-    const onEnter = (e: any) => {
+    const onEnter = (e: number) => {
         pureOnEnter(e, addUser)
     }
 

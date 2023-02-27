@@ -9,12 +9,14 @@
 }
 
 .input {
+    border: 1px solid red
 }
 
 .input:focus {
 }
 
 .errorInput {
+    outline: 0;
     border: 1px solid red
 }
 
