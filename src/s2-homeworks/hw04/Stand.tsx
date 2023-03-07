@@ -92,6 +92,7 @@ const Stand = () => {
                         checked={stateForAllCheckboxes}
                         onChange={(e) => setChecked(e.currentTarget.checked)}
                     />
+
                 </div>
             </div>
         </div>
