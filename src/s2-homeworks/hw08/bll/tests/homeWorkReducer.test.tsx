@@ -32,10 +32,11 @@ test('sort name down', () => {
     expect(newState[0]._id).toBe(0)
 })
 test('check age 18', () => {
-    const newState = homeWorkReducer(initialState, {
+    const newState: UserType[] = homeWorkReducer(initialState, {
         type: 'check',
         payload: 18,
     })
 
     expect(newState.length).toBe(4)
+    // expect(newState.map(el => el.age)).toBe([55, 40, 44, 66])
 })
