@@ -1,9 +1,16 @@
-import React from 'react'
+import React, {ChangeEvent} from 'react'
 import {Slider, SliderProps} from '@mui/material'
+import {Dispatch} from "redux";
+
+
 
 const SuperRange: React.FC<SliderProps> = (props) => {
+
+
+
     return (
         <Slider
+
             sx={{ // стили для слайдера // пишет студент
                 
             }}
