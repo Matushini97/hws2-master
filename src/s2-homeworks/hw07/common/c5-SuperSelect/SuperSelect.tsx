@@ -4,6 +4,7 @@ import React, {
     ChangeEvent, SetStateAction,
 } from 'react'
 import s from './SuperSelect.module.css'
+import {ThemeReducerType} from "../../../hw12/bll/themeReducer";
 
 type DefaultSelectPropsType = DetailedHTMLProps<
     SelectHTMLAttributes<HTMLSelectElement>,
@@ -11,8 +12,9 @@ type DefaultSelectPropsType = DetailedHTMLProps<
 >
 
 type SuperSelectPropsType = DefaultSelectPropsType & {
-    options?: any[]
+    options?: any[] | {id: number, value: string}[]
     onChangeOption?: (option: any) => void
+
 }
 
 const SuperSelect: React.FC<SuperSelectPropsType> = ({
@@ -48,6 +50,7 @@ const SuperSelect: React.FC<SuperSelectPropsType> = ({
         <select
             className={finalSelectClassName}
             onChange={onChangeCallback}
+
             {...restProps}
         >
             {mappedOptions}
