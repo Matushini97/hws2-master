@@ -26,7 +26,7 @@ const HW13 = () => {
     const send = (x?: boolean | null) => () => {
         const url =
             x === null
-                ? 'https://samurai.it-incubator.io/api/3.0/error' // имитация запроса на не корректный адрес
+                ? 'https://xxxxxx.ccc' // имитация запроса на не корректный адрес
                 : 'https://samurai.it-incubator.io/api/3.0/homework/test'
 
         setCode('')
@@ -39,29 +39,28 @@ const HW13 = () => {
             .then((res) => {
                 setCode('Код 200!')
                 setImage(success200)
-                setInfo('')
-                setText('...всё ок) код 200 - обычно означает что скорее всего всё ок)')
+                setInfo(res.data?.info)
+                setText(res.data.errorText)
 
             })
             .catch((e) => {
-                if (e.response.status === 500) {
-                    setCode('Код 200!')
-                    setText("эмитация ошибки на сервере ошибка 500 - обычно означает что что-то сломалось на сервере, например база данных)");
+                setText(e.response?.data?.errorText || e.message )
+                setInfo(e.response?.data?.info || e.name)
+                if (e.response?.status === 500) {
+                    setCode('Ошибка 500!')
                     setImage(error500);
-                } else if (e.response.status === 400) {
+                } else if (e.response?.status === 400) {
                     setCode("Ошибка 400!");
-                    setText("Ты не отправил success в body вообще! ошибка 400 - обычно означает что скорее всего фронт отправил что-то не то на бэк!");
                     setImage(error400)
                 } else {
-                    setText("Error");
-                    setCode("Network Error AxiosError");
+                    setCode("Error!");
                     setImage(errorUnknown)
                 }
 
             })
-            .finally(()=>{
-                setInfo('')
-            })
+            // .finally(()=>{
+            //     setInfo('')
+            // })
     }
 
     return (
