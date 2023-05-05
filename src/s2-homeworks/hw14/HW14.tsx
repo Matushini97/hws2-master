@@ -42,11 +42,10 @@ const HW14 = () => {
                 }
             })
     }
-    console.log(isLoading)
+
     const onChangeText = (value: string) => {
         setFind(value)
         // делает студент
-        sendQuery(value)
         setSearchParams(value)
         // добавить/заменить значение в квери урла
         // setSearchParams(
